@@ -89,24 +89,35 @@ void printVector(std::vector<int> const& vec) {
 }
 
 int main() {
-    std::vector<int> myVector = generate_random_vector(10);
+    std::vector<int> bubleVector = generate_random_vector(10);
+    std::vector<int> mergeSort(bubleVector.begin(), bubleVector.end());
+    std::vector<int> sort(bubleVector.begin(), bubleVector.end());
 
-    ScopedTimer timer("bubble_sort");
-    bubble_sort(myVector);
+    // printVector(mergeSort);
 
-    ScopedTimer timer2("merge_sort");
-    merge_sort(myVector);
+    {
+        ScopedTimer timer("bubble_sort");
+        bubble_sort(bubleVector);
+    }
 
-    ScopedTimer timer3("std_sort");
-    std::sort(myVector.begin(), myVector.end());
+    {
+        ScopedTimer timer2("merge_sort");
+        merge_sort(mergeSort);
+    }
 
-    if(is_sorted(myVector)) {
+    {
+        ScopedTimer timer3("std_sort");
+        std::sort(sort.begin(), sort.end());
+    }
+
+
+    if(is_sorted(mergeSort)) {
         std::cout << "It's sorted" << std::endl;
     } else {
         std::cout << "It's not sorted" << std::endl;
     }
 
-    printVector(myVector);
+    //printVector(mergeSort);
 
     return 0;
 }

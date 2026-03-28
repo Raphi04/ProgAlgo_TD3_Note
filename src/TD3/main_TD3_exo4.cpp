@@ -111,13 +111,12 @@ void printVector(std::vector<int> const& vec) {
 }
 
 int main() {
-    std::vector<int> bubleVector = generate_random_vector(10);
-    std::vector<int> mergeSort = generate_random_vector(10);
-    std::vector<int> sort = generate_random_vector(10);
+    std::vector<int> bubleVector = generate_random_vector(1000);
+    std::vector<int> mergeSort(bubleVector.begin(), bubleVector.end());
+    std::vector<int> sort(bubleVector.begin(), bubleVector.end());
     std::vector<int> test { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-    printVector(mergeSort);
-
+    // printVector(mergeSort);
 
     {
         ScopedTimer timer("bubble_sort");
@@ -126,7 +125,7 @@ int main() {
 
     {
         ScopedTimer timer2("merge_sort");
-        merge_sort(test);
+        merge_sort(mergeSort);
     }
 
     {
@@ -134,13 +133,15 @@ int main() {
         std::sort(sort.begin(), sort.end());
     }
 
-    if(is_sorted(test)) {
+    if(is_sorted(mergeSort)) {
         std::cout << "It's sorted" << std::endl;
     } else {
         std::cout << "It's not sorted" << std::endl;
     }
 
-    printVector(test);
+    // printVector(test);
+
+    merge_sort(test);
 
     if(search(test, 10) != -1) {
         std::cout << "C'est trouvé" << std::endl;
