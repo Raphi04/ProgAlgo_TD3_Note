@@ -110,6 +110,12 @@ int main() {
         std::sort(sort.begin(), sort.end());
     }
 
+    /*
+        On remarque qu'avec un petit tableau, le bubble sort est mieux que le merge sort et inverssement pour un grand tableau.
+        Dans tous les cas, le std::sort est mieux que les deux autres.
+
+        On peut en déduire qu'il faut choisir son algorithme de tri en fonction de nos besoins.
+    */
 
     if(is_sorted(mergeSort)) {
         std::cout << "It's sorted" << std::endl;
