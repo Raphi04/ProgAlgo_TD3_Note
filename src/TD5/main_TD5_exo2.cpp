@@ -163,6 +163,7 @@ WalkResult simulation(Input_Structure const& input) {
         }
 
         results.final_position += guardDir;
+        results.steps_taken++;
 
         if(results.final_position.x <= maxWidth && results.final_position.y <= maxHeight && results.final_position.x >= 0 && results.final_position.y >= 0) {
             results.visited_positions.insert(results.final_position);
@@ -170,8 +171,6 @@ WalkResult simulation(Input_Structure const& input) {
             isNotOutOfBound = false;
         }
     }
-
-    results.steps_taken = results.visited_positions.size();
 
     return results;
 };
@@ -207,7 +206,8 @@ int main() {
     WalkResult results = simulation(map);
 
     std::cout << "Position finale : " << results.final_position << std::endl;
-    std::cout << "Nombre de position differentes : " << results.steps_taken << std::endl;
+    std::cout << "Nombre de position : " << results.steps_taken << std::endl;
+    std::cout << "Nombre de position differentes : " << results.visited_positions.size() << std::endl;
 
     return 0;
 }
