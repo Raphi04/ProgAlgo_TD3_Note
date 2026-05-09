@@ -1,6 +1,6 @@
-# Réponse au TD 07
+# **Réponse au TD 07**
 
-## Exercice 1
+## **Exercice 1**
 
 Commande utilisé pour extraire les données du fichier OpenStreetMap et les transformer en graphe :
 
@@ -24,9 +24,9 @@ Commande utilisé pour visualiser le graphe :
 .\OSM_GRAPH.exe visualize ./data/test_extract.graph
 ```
 
-## Exercice 2
+## **Exercice 2**
 
-### Question 1
+### **Question 1**
 
 > La structure **_WeightedGraph_** se situe dans le fichier : **_./src/dataStructure/weightedGraph.hpp_**.
 
@@ -38,7 +38,9 @@ Elle sert à stocker la position des points du graphe.
 
 => La différence c'est que **_PositionedGraph_** stocke les positions des points alors que **_WeightedGraph_** stocke leur IDs et le poids de leur liens.
 
-### Question 2
+---
+
+### **Question 2**
 
 > Extraction OSM
 
@@ -52,7 +54,9 @@ Simplifie le graphe formé en enlevant les points non-connectés au graphe princ
 
 Ouvre une fenêtre où le graphe mis en input est affiché.
 
-### Question 3
+---
+
+### **Question 3**
 
 Dans la simplification, il y a :
 
@@ -61,3 +65,5 @@ Dans la simplification, il y a :
 - On groupe les points qui sont proches, on fusionne les clusters proche, on retire les cluster vide, on corrige les erreurs de superposition des points en prenant le cluster le plus proche du point, on retire les groupes de deux points et on retire les points qui sont sur les bords et qui sont trop court par rapport à une valeur.
 
 - On garde seulement le plus gros cluster de points et on retire les autres.
+
+> Cela permet de réduire le nombre de points et de rendre le graphe plus lisible pour ce que l'on souhaite faire. L'inconvenient c'est qu'on perd de l'information sur la réel typologie de la zone sélectionée.

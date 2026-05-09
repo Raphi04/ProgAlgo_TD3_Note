@@ -52,7 +52,25 @@ std::unordered_map<IDType, std::pair<float, IDType>> Dijkstra(WeightedGraph cons
 
     to_visit.push({0.0f, start});
 
-    /* TODO */
+    while (!to_visit.empty()) {
+        std::pair<float, IDType> currentNode = to_visit.top();
+        to_visit.pop();
+
+        if(currentNode.second == end) {
+            break;  
+        }
+        
+        for(DataStructure::WeightedArc const& currentNodeNeighbors : graph.get_neighbors(currentNode.second)) {
+            if(!distances.contains(currentNodeNeighbors.to)) {
+                distances.insert({currentNodeNeighbors.to, {currentNode.first + currentNodeNeighbors.weight, currentNode.second}});
+                to_visit.push({currentNode.first + currentNodeNeighbors.weight, currentNodeNeighbors.to});
+
+            } else if(distances[currentNodeNeighbors.to].first > currentNode.first + currentNodeNeighbors.weight) {
+                distances[currentNodeNeighbors.to] = {currentNode.first + currentNodeNeighbors.weight, currentNode.second};
+                to_visit.push({currentNode.first + currentNodeNeighbors.weight, currentNodeNeighbors.to});
+            }
+        };
+    }
     
     return distances;
 }
